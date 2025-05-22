@@ -40,8 +40,8 @@ function startBot() {
   }
 
   bot = createClient({
-    host: 'localhost', // Server IP
-    port: 19132,                 // Server port
+    host: 'FaltuMPE.aternos.me', // Server IP
+    port: 58163,                 // Server port
     username: 'OakCrowd9366',    // Bot's name
     offline: false               // Set true for offline-mode if using LAN
   });
