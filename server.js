@@ -6,6 +6,7 @@ const PORT = 3000;
 let bot;
 let reconnectTimeout; // To track the reconnect timeout and ensure only one is active
 let disconnectAtNight=true;
+let isStarted=true;
 
 app.get('/keep-alive', (req, res) => {
     res.json({
@@ -28,7 +29,27 @@ app.get('/toggle', (req, res) => {
     }
 });
 
+app.get('/start', (req, res) => {
+    startBot();
+    isStarted = true;
+    res.json({
+      "message": "Bot started"
+    });
+});
 
+
+app.get('/stop', (req, res) => {
+    try{
+	bot.disconnect("Turning off");
+    }
+    catch(err){
+	    console.log(err);
+	}
+    isStarted=false;
+	res.json({
+      "message": "Bot stopped"
+    });
+});
 
 console.log("Night Disconnecting Mode");
 
